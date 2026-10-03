@@ -1,0 +1,4 @@
+.venv/
+__pycache__/
+*.3mf
+*.png
