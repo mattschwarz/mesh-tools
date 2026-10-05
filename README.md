@@ -16,5 +16,15 @@ Libraries: trimesh, manifold3d (booleans, needs a watertight mesh), pymeshlab (r
 triangle (constrained triangulation), scipy/shapely. AI-generated meshes (Meshy etc.) are usually not
 watertight, so repair with pymeshlab before trying a boolean.
 
-`blender/addon.py` is the MCP-for-Blender addon (now installed via `uvx mcp-for-blender install-addon`).
+The Blender MCP addon is installed with `uvx mcp-for-blender install-addon` (not vendored here).
+## Limitations
+
+- Single-object projects only: assumes `3D/Objects/object_1.model` and one build item.
+- Cut regions are axis-aligned boxes in mesh coordinates; the hole must be a single simple loop.
+- `render3mf.py` maps the four Bambu paint codes (`4`, `8`, `0C`, `1C`) to filament slots 1-4 only.
+- `slice3mf.sh` calls the macOS Bambu Studio binary path; adjust for other platforms.
+- No automated tests. Verify with `inspect3mf.py` (open-edge count should not change after a cut).
+- The `triangle` dependency wraps Shewchuk's Triangle, which is free for private and research use
+  but asks permission for commercial use.
+
 Origin: built 2026-10-03 while removing the tail from a Meshy corgi and rescaling the print.
